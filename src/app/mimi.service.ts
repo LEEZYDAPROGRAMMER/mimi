@@ -58,6 +58,7 @@ export class MimiService {
    {
     
     console.log(name,email,password,"signup details serv")
+
    return  firebase.auth().createUserWithEmailAndPassword(email,password).then((user)=>{
     this.setCurrentSession(firebase.auth())
        console.log("user is registered");
@@ -131,7 +132,9 @@ addTodo(newToDoName,newToDoTime)
        time: newToDoTime,
       userID:  userID.uid
      }).then((data)=>{
- 
+     
+     
+      
        console.log(data)
      }).catch((error)=>{
 
@@ -145,36 +148,49 @@ updateTodo(todos,editName,editTime)
 {
 //name
   this.dbfire.collection("todos").doc(todos.todoKey).update('name',editName).then((data)=> {
-
+   
     console.log("Document name successfully updated!",data);
 }).catch(function(error) {
     console.error("Error updating document: ", error);
 });
 //time
 this.dbfire.collection("todos").doc(todos.todoKey).update('time',editTime).then((data)=> {
-
+  
   console.log("Document time successfully updated!",data);
 }).catch(function(error) {
   console.error("Error updating document: ", error);
 });
 
+
 }
-rtTodo()
+async rtTodo()
 {
-  this.getTodos()
- console.log(this.todos,"hh")
-  return this.todos
+  let result :any
+ await this.getTodos().then(data =>{
+  result = data
+​
+ console.log(result.length);
+})
+console.log(result);
+//this.LandMarks()
+return  result 
+
+// console.log(this.todos,"hh")
+ // return this.todos
 }
  ///////get todos
  getTodos()
  {
- 
+  this.todos=[]
+  this.todoTemp=[]
    let ans=[]
    let ans2=[]
    let user=this.readCurrentSession()
    let userID=user.uid
 
-  this.dbfire.collection("todos").get().then((querySnapshot) => {
+   //
+ return new Promise((resolve, reject) => {
+this.dbfire.collection("todos").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
      
      // ans.push(doc.data())
@@ -204,6 +220,9 @@ rtTodo()
          }
  
     }
+    resolve(this.todos)
+});
+
 });
 console.log(this.todoTemp,"todo array")
 
@@ -218,10 +237,11 @@ console.log(ans,"ans array")
  {
   this.dbfire.collection("todos").doc(todos.todoKey).delete().then((data)=> {
     console.log("Document successfully deleted!",data);
+    
 }).catch(function(error) {
     console.error("Error removing document: ", error);
 });
-   
+
  }
   ///set user session start
  setCurrentSession(user){
