@@ -24,7 +24,8 @@ export class HomePage {
   addTodo(addName,addTime)
   {
      this.mi.addTodo(addName,addTime);
-  
+   this.addName=null
+   this.addTime=null
   }
   deleteTodo(todos)
  {
@@ -35,6 +36,8 @@ export class HomePage {
  {
      
   this.mi.updateTodo(todos,editName,editTime)
+  this.editName=null
+  this.editTime=null
  }
   
 }

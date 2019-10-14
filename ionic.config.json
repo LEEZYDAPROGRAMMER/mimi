@@ -1,5 +1,7 @@
 {
   "name": "Mimi",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
