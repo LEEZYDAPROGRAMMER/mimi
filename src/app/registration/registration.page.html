@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title text-center>
+      <img routerLink='/home' alt="logo" height="35px" width="35px"  src="assets\icon\clock (3).png" /> 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form  [formGroup]="passForm">  
+    <ion-card>
+        
+        <ion-card-title  text-center color="primary">Register </ion-card-title>
+
+       
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+         
+        
+        <!-- name -->
+          <ion-item>
+              <ion-label position="stacked">Name <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required type="text"   formControlName="name"  required></ion-input>
+            </ion-item>
+  
+            <!--email  -->
+          <ion-item>
+            <ion-label position="stacked">Email <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input  type="text"   formControlName="email"  required></ion-input>
+          </ion-item>
+     <!-- password -->
+          <ion-item>
+            <ion-label position="stacked">Password<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input  minlength="8"  maxlength="8"  type="text"  formControlName="password" required></ion-input>
+            
+          </ion-item>
+       
+        
+        </ion-list>
+    
+      </ion-card>
+
+        <div class="ion-padding">
+          <ion-button [disabled]="!passForm.valid"  expand="block" type="submit" class="ion-no-margin" (click)="signup()"><ion-icon name="person-add"></ion-icon></ion-button>
+        </div>
+
+      </form> 
+</ion-content>
