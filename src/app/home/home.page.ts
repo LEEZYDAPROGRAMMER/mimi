@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MimiService } from '../mimi.service';
 import { LoadingController } from '@ionic/angular';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ export class HomePage {
     this.toDo=[]
 
    this.getdata()
+   console.log(moment(this.addTime).format());
   }
   getdata()
   {

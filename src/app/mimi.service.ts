@@ -125,11 +125,13 @@ export class MimiService {
  ///////add todo
 addTodo(newToDoName,newToDoTime)
 {
+  var tyt=newToDoTime.substring(11,16);
+  console.log(tyt,"time")
  let userID=this.readCurrentSession()
- console.log(newToDoName,newToDoTime)
+ console.log(newToDoName,tyt)
      this.dbfire.collection("todos").add({
        name: newToDoName,
-       time: newToDoTime,
+       time: tyt,
       userID:  userID.uid
      }).then((data)=>{
      
@@ -146,6 +148,8 @@ addTodo(newToDoName,newToDoTime)
  ///////update todo
 updateTodo(todos,editName,editTime)
 {
+  var tyt=editTime.substring(11,16);
+  console.log(tyt,"time")
 //name
   this.dbfire.collection("todos").doc(todos.todoKey).update('name',editName).then((data)=> {
    
@@ -154,7 +158,7 @@ updateTodo(todos,editName,editTime)
     console.error("Error updating document: ", error);
 });
 //time
-this.dbfire.collection("todos").doc(todos.todoKey).update('time',editTime).then((data)=> {
+this.dbfire.collection("todos").doc(todos.todoKey).update('time',tyt).then((data)=> {
   
   console.log("Document time successfully updated!",data);
 }).catch(function(error) {

@@ -24,10 +24,11 @@
    </ion-item>
       
    <!-- Time -->
-   <ion-item>
-      <ion-label position="stacked">Time</ion-label>
-      <ion-input type="text" [(ngModel)]="editTime" ></ion-input>
-   </ion-item>
+<ion-item lines = "inset" color="none">
+    <ion-label>Time</ion-label>
+    <ion-datetime [(ngModel)]="editTime" displayFormat="HH:mm A"  color="primary" style="font-weight: 500;font-weight: 200" name="alarm" placeholder="Select Time" ></ion-datetime>
+</ion-item>
+  
 
    <!-- leezy action buttons -->
   
@@ -47,10 +48,10 @@
     <ion-input type="text" [(ngModel)]="addName"  ></ion-input>
   </ion-item>
   <!--  TIME-->
-    <ion-item>
-        <ion-label position="stacked">Time</ion-label> 
-    <ion-input type="text" [(ngModel)]="addTime" ></ion-input>
-    </ion-item>
+  <ion-item lines = "inset" color="none">
+    <ion-label>Time</ion-label>
+    <ion-datetime [(ngModel)]="addTime" displayFormat="HH:mm A" color="primary" style="font-weight: 500;font-weight: 200" name="alarm" placeholder="Select Time" ></ion-datetime>
+</ion-item>
   <ion-button color="primary"  (click)="addTodo(addName,addTime)">Add</ion-button>
 </ion-card>
 </ion-content>

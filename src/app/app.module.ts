@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import * as firebase from 'firebase';
+import * as moment from 'moment';
 
 var firebaseConfig = {
   apiKey: "AIzaSyD3rkOsURcKtR0ic6mVRrmuE6575FjZ-bw",
